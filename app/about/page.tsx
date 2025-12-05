@@ -1,9 +1,21 @@
 "use client"
+
+import * as React from "react"
 import { useState, useEffect, useRef, useMemo } from 'react'
 import Image from 'next/image'
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import Autoplay from "embla-carousel-autoplay"
 import { Award, Heart, Leaf, Users, MapPin, ChevronLeft, ChevronRight, RotateCw } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { 
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+
 import * as THREE from 'three'
 
 const stats = [
@@ -387,6 +399,17 @@ const VirtualTour360 = () => {
 }
 
 export default function AboutPage() {
+
+  const plugin = React.useRef(
+    Autoplay ({ delay: 5000 })
+  )
+
+  const images = [
+  "/slide-1.jpg",
+  "/slide-2.jpg",
+  "/slide-3.jpg",
+  ];
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -427,44 +450,8 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="relative w-full h-[600px]">
-                  <Image 
-                    src="/placeholder.svg" 
-                    alt="Hotel Lobby" 
-                    fill
-                    className="rounded-lg shadow-xl object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
-              </div>
-              <div>
-                <p className="text-[#D4AF37] uppercase tracking-widest text-sm mb-3">Since 1998</p>
-                <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#5C0A1E] mb-6">A Garden of Dreams</h2>
-                <div className="space-y-4 text-[#5C0A1E]/70 leading-relaxed">
-                  <p>
-                    Nestled in the heart of Paradise City, Vencio&apos;s Garden Hotel & Restaurant was founded with a
-                    vision to create an oasis of tranquility and luxury.
-                  </p>
-                  <p>
-                    What started as a small family-owned guesthouse has blossomed into one of the region&apos;s most
-                    prestigious hospitality destinations, while never losing the warmth and personal touch that defines
-                    us.
-                  </p>
-                  <p>
-                    Our sprawling gardens, meticulously maintained over decades, serve as the living heart of our
-                    property, offering guests a serene escape from the bustle of everyday life.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-16 bg-[#5C0A1E]">
+        {/* Stats Section */}
+        <section className="py-16 bg-[#5C0A1E] shadow-md">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
@@ -477,68 +464,219 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="py-20 bg-[#F5E6C8]/30">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <p className="text-[#D4AF37] uppercase tracking-widest text-sm mb-3">What We Stand For</p>
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#5C0A1E]">Our Values</h2>
+        {/* Story Section */}
+        <section className="py-10 bg-white-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
+            <div>
+              <p className="text-[#D4AF37] uppercase tracking-widest text-md lg:text-xl mb-3">A Place You Can Call Home</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#5C0A1E] mb-6 text-balance">Our Story</h2>
+              <div className="space-y-4 text-[#5C0A1E]/90 text-xl">
+                <p className="text-pretty text-justify">
+                    Located in Tawiran, Calapan City, Oriental Mindoro, Vencio&apos;s Garden Hotel & Restaurant 
+                    has been welcoming guests since 2008 with warm Filipino hospitality and exceptional service.
+                </p>
+                <p className="text-pretty text-justify">
+                    Our hotel features 10 comfortable rooms surrounded by lush tropical gardens, creating a 
+                    peaceful retreat for both business and leisure travelers. The serene garden setting provides 
+                    the perfect escape while remaining conveniently close to the city center.
+                </p>
+                <p className="text-pretty text-justify">
+                    Beyond accommodations, our restaurant has earned recognition as the #2 dining destination 
+                    in Calapan on TripAdvisor, serving a delightful mix of Filipino, Asian, and international 
+                    cuisine prepared with fresh, quality ingredients.
+                </p>
+                <p className="text-pretty text-justify">
+                    Whether you&apos;re visiting for business, leisure, or hosting a special event, Vencio&apos;s Garden 
+                    offers the perfect blend of comfort, nature, and genuine Filipino hospitality.
+                </p>
+              </div>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {values.map((value, index) => (
-                <div key={index} className="bg-white p-6 rounded-lg shadow-sm text-center">
-                  <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#5C0A1E] flex items-center justify-center">
-                    <value.icon className="w-7 h-7 text-[#D4AF37]" />
+
+            {/* Values Section */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 space-x-6 mt-10">
+              <div
+                className="h-100 lg:h-170 w-full bg-cover bg-center rounded-lg shadow-xl border border-red-900"
+                style={{
+                  backgroundImage: "url('/venciosloc.jpg')"
+                }}
+              />
+
+              <div className="text-center ml-0 mb-12 lg:ml-5 mt-10 lg:mt-0">
+                <p className="text-[#D4AF37] uppercase tracking-widest text-md lg:text-xl mb-3">The Commitment</p>
+                <h2 className="text-3xl md:text-4xl font-bold text-[#5C0A1E] mb-4 text-balance">Our Values</h2>
+                  <p className="text-[#5C0A1E]/80 text-md pb-5 px-5 text-justify">
+                    At Vencio's, we are passionate about providing our guests with more than just a place to stay or dine. We strive to create an 
+                    experience rooted in comfort, care, and sustainability. With plans to rebrand as a premier eco-tourism destination, our vision 
+                    is to blend modern comforts with eco-friendly practices that honor the natural beauty of Oriental Mindoro. 
+                  </p>
+
+                <div className="container mx-auto px-4">
+                  <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+                    {values.map((value, index) => (
+                      <div key={index} className="bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow">
+                        <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#5C0A1E] flex items-center justify-center">
+                          <value.icon className="w-7 h-7 text-[#D4AF37]" />
+                        </div>
+                        <h3 className="font-serif font-semibold text-[#5C0A1E] text-xl mb-2">{value.title}</h3>
+                        <p className="text-[#5C0A1E]/80 text-sm">{value.description}</p>
+                      </div>
+                    ))}
                   </div>
-                  <h3 className="font-serif font-semibold text-[#5C0A1E] text-lg mb-2">{value.title}</h3>
-                  <p className="text-[#5C0A1E]/70 text-sm">{value.description}</p>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Services Section */}
+        <section className="py-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <p className="text-[#D4AF37] uppercase tracking-widest text-md lg:text-xl mb-3">
+                What We Offer
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#5C0A1E]">
+                Our Services
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {
+                  title: "HOTEL",
+                  image: "/icon-256x256.png",
+                  description: (
+                    <>
+                      Relax in our well-appointed rooms, designed to cater to every traveler’s needs.
+                    </>
+                  )
+                },
+                {
+                  title: "RESTAURANT",
+                  image: "/resto-logo.png",
+                  description: (
+                    <>
+                      Enjoy a symphony of flavors with our wide array of freshly prepared dishes,
+                      from seafood specialties to hearty Filipino favorites.
+                    </>
+                  )
+                },
+                {
+                  title: "CATERING",
+                  image: "/catering-logo.jpg",
+                  description: (
+                    <>
+                      Whether it’s a wedding, birthday, or corporate event, we deliver unforgettable
+                      experiences with customized menus and exceptional service.
+                    </>
+                  )
+                }
+              ].map((item, idx) => (
+                <Card
+                  key={idx}
+                  className="rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:scale-105 p-0 pb-5 mb-10"
+                >
+                  <CardHeader className="p-0 pt-6 flex justify-center">
+                    <div className="w-38 h-38 rounded-full overflow-hidden shadow-md flex items-center justify-center bg-white">
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        width={128}
+                        height={128}
+                        className="object-contain w-full h-full"
+                      />
+                    </div>
+                  </CardHeader>
+
+                  <CardContent>
+                    <div className="p-2">
+                      <h3 className="text-2xl font-bold mb-4 text-[#5C0A1E] text-center">
+                        {item.title}
+                      </h3>
+                      <p className="mb-6 text-justify text-[#5C0A1E]/80">
+                        {item.description}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <p className="text-[#D4AF37] uppercase tracking-widest text-sm mb-3">Visit Us</p>
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#5C0A1E]">Location & Contact</h2>
+
+        {/* Banner Section */}
+          <section className="py-10">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center my-5">
+                <h2 className="text-3xl md:text-4xl font-bold text-[#5C0A1E]">
+                  COME AND EXPERIENCE THE <span className="text-[#D4AF37]">VENCIO&apos;S DIEFFERENCE</span>
+                </h2>
+              </div>
+                <div className="my-5">
+                  Whether you&apos;re here for business, leisure, or celebration, Vencio&apos;s Garden Hotel & Restaurant promises warm hospitality, great food, and a memorable stay.
+                </div>
+                <div className="flex items-center justify-center">
+                  <Carousel
+                    plugins={plugin.current ? [plugin.current] : []}
+                    className="max-w-md my-3"
+                  >
+                    <CarouselContent>
+                      {images?.map((img, index) => (
+                        <CarouselItem key={index}>
+                          <div>
+                            <Card>
+                              <CardContent className="flex aspect-square items-center justify-center p-0">
+                                <Image
+                                  src={img}
+                                  alt={`Slide ${index + 1}`}
+                                  width={500}
+                                  height={500}
+                                  className="w-full h-full object-contain rounded-xl"
+                                />
+                              </CardContent>
+                            </Card>
+                          </div>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                  </Carousel>
+                </div>
+            </div>
+          </section>
+
+        
+
+        {/* CTA Section*/}
+        <div className="h-1 bg-[#D4AF37]"/>
+        <section className="pb-10 pt-16 bg-[#5C0A1E] shadow-lg">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-300">
+                  Vencio's Garden
+                </h2>
+                <p className="text-[#ecd8af] uppercase tracking-widest text-md">
+                  Hotel & Restaurant
+                </p>
+              </div>
+              <div
+                className="h-20 w-20 bg-center bg-contain bg-no-repeat"
+                style={{ backgroundImage: "url('/logo.png')" }}
+              />
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-8">
-              <div className="rounded-lg overflow-hidden shadow-xl h-[400px]">
-                <iframe
-                  src="https://www.google.com/maps?q=https://maps.app.goo.gl/s8TZd3Ubg9jr573B7&output=embed"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  title="Hotel Location"
-                ></iframe>
-              </div>
 
-              <div className="space-y-6">
-                <div className="bg-[#5C0A1E] text-[#F5E6C8] p-6 rounded-lg">
-                  <h3 className="font-serif font-bold text-xl mb-4">Address</h3>
-                  <p className="mb-4">Paradise City, Philippines</p>
-                  <a
-                    href="https://maps.app.goo.gl/s8TZd3Ubg9jr573B7"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-[#D4AF37] text-[#5C0A1E] px-6 py-3 rounded-lg hover:bg-[#D4AF37]/90 font-semibold"
-                  >
-                    <MapPin className="w-5 h-5" />
-                    Open in Maps
-                  </a>
-                </div>
-
-                <div className="bg-[#F5E6C8] p-6 rounded-lg">
-                  <h3 className="font-serif font-bold text-xl text-[#5C0A1E] mb-4">Contact Us</h3>
-                  <div className="space-y-3 text-[#5C0A1E]/80">
-                    <p>📞 +63 XXX XXX XXXX</p>
-                    <p>✉️ info@venciosgarden.com</p>
-                    <p>🕒 24/7 Reception</p>
-                  </div>
+            <div className="max-w-4xl mx-auto">
+              <div className="flex flex-col sm:items-end items-start mb-12">
+                <div className="text-gray-200 text-lg italic space-y-1 text-right">
+                  <p>Hotel: 288-7789</p>
+                  <p>Restaurant: 288-7790</p>
+                  <p>Takeout: 0918 957 2855</p>
+                  <p>Email: venciosgarden@yahoo.com</p>
+                  <p>Facebook: @venciosgardenhotel</p>
+                  <p>Instagram: @venciosgarden</p>
+                  <p>#08 Nautical Highway, Tawiran, Calapan City, Oriental Mindoro</p>
                 </div>
               </div>
             </div>

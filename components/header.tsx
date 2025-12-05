@@ -19,6 +19,7 @@ export function Header() {
     { href: "/about", label: "About" },
     { href: "/rooms", label: "Rooms" },
     { href: "/reservation", label: "Reservation" },
+    { href: "/restaurant", label: "Dine" },
     { href: "/contact", label: "Contact" },
   ]
 
