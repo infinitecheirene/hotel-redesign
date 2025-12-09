@@ -314,7 +314,7 @@ export default function ReservationPage() {
       <Header />
       <main className="pt-20">
         {/* Hero Section - Burgundy gradient matching logo */}
-        <section className="relative py-20 bg-gradient-to-br from-rose-950 via-red-900 to-rose-950 overflow-hidden">
+        <section className="relative py-20 bg-linear-to-br from-rose-950 via-red-900 to-rose-950 overflow-hidden">
           <div className="absolute inset-0 opacity-20">
             <div
               className="absolute inset-0"
@@ -325,9 +325,9 @@ export default function ReservationPage() {
             />
           </div>
           <div className="relative container mx-auto px-4 text-center">
-            <p className="text-amber-400 uppercase tracking-[0.3em] text-sm mb-4 font-semibold">Book Your Event</p>
+            <p className="text-amber-400 uppercase tracking-[0.3em] text-md mb-4 font-semibold">Book your Event</p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-4">
-              Event & Meeting Reservation
+              Event & Meeting Reservation        
             </h1>
             <p className="text-lg text-stone-300 max-w-2xl mx-auto">
               Create unforgettable moments in our elegant venues at Vencios Garden

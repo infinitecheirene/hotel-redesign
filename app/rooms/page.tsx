@@ -44,7 +44,7 @@ export default function RoomsPage() {
       <Header />
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="relative py-32 bg-[#5C0A1E]">
+        <section className="relative py-20 bg-[#5C0A1E] overflow-hidden">
           <div className="absolute inset-0 opacity-20">
             <Image 
               src="/room.jpg" 
@@ -55,13 +55,13 @@ export default function RoomsPage() {
             />
           </div>
           <div className="relative container mx-auto px-4 text-center">
-            <p className="text-[#D4AF37] uppercase tracking-widest text-sm mb-3">
+            <p className="text-amber-400 uppercase tracking-[0.3em] text-lg mb-4 font-semibold">
               Accommodations
             </p>
-            <h1 className="text-4xl md:text-6xl font-serif font-bold text-[#F5E6C8] mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-4">
               Our Rooms & Suites
             </h1>
-            <p className="text-[#F5E6C8]/80 max-w-3xl mx-auto text-lg">
+            <p className="text-lg text-stone-300 max-w-2xl mx-auto">
               Discover our collection of elegantly appointed rooms, each with immersive 360° virtual tours to help you find your perfect stay.
             </p>
           </div>

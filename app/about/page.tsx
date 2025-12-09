@@ -411,44 +411,34 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#F5E6C8]/30">
       <Header />
       <main className="pt-20">
-        <section className="relative py-32 bg-[#5C0A1E]">
+
+        {/* Hero Section */}
+        <section className="relative py-20 bg-[#5C0A1E] overflow-hidden">
           <div className="absolute inset-0 opacity-20">
             <Image 
-              src="/placeholder.svg" 
+              src="/hero-banner.jpg" 
               alt="" 
               fill
-              className="object-cover"
+              className="object-cover" 
               priority
             />
-          </div>
-          <div className="relative container mx-auto px-4 text-center">
-            <p className="text-[#D4AF37] uppercase tracking-widest text-sm mb-3">Our Story</p>
-            <h1 className="text-4xl md:text-6xl font-serif font-bold text-[#F5E6C8] mb-6">
-              About Vencio&apos;s Garden
-            </h1>
-            <p className="text-[#F5E6C8]/80 max-w-3xl mx-auto text-lg">
-              A legacy of luxury, comfort, and unparalleled hospitality since 1998
-            </p>
-          </div>
-        </section>
-
-        <section className="py-20 bg-gradient-to-b from-white to-[#F5E6C8]/20">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <p className="text-[#D4AF37] uppercase tracking-widest text-sm mb-3">Find Your Way</p>
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#5C0A1E]">
-                360° Route to Our Hotel
-              </h2>
-              <p className="text-[#5C0A1E]/70 mt-4 max-w-2xl mx-auto">
-                Take a virtual journey from the highway to our hotel entrance. Experience the route before you arrive!
-              </p>
             </div>
-            <VirtualTour360 />
-          </div>
-        </section>
+              <div className="relative container mx-auto px-4 text-center">
+                <p className="text-amber-400 uppercase tracking-[0.3em] text-lg mb-4 font-semibold">
+                  Your Peaceful Retreat in the Heart of Calapan 
+                </p>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-4">
+                  About Vencio&apos;s Garden
+                </h1>
+                <p className="text-lg text-stone-300 max-w-2xl mx-auto">
+                  A serene escape in the heart of Calapan City, Oriental Mindoro
+                </p>
+              </div>
+          </section>
+        
 
         {/* Stats Section */}
         <section className="py-16 bg-[#5C0A1E] shadow-md">
@@ -464,13 +454,30 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* 360 Room Tour Section */}
+        <section className="py-20 bg-gradient-to-b from-white to-[#F5E6C8]/20">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <p className="text-[#D4AF37] uppercase tracking-widest text-md lg:text-xl mb-3">Find Your Way</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#5C0A1E] mb-6 text-balance">
+                360° Route to Our Hotel
+              </h2>
+              <p className="text-[#5C0A1E]/70 mt-4 max-w-2xl mx-auto">
+                Take a virtual journey from the highway to our hotel entrance. Experience the route before you arrive!
+              </p>
+            </div>
+            <VirtualTour360 />
+          </div>
+        </section>
+
         {/* Story Section */}
+        <div className="h-1 bg-[#D4AF37]"/>
         <section className="py-10 bg-white-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
             <div>
               <p className="text-[#D4AF37] uppercase tracking-widest text-md lg:text-xl mb-3">A Place You Can Call Home</p>
               <h2 className="text-3xl md:text-4xl font-bold text-[#5C0A1E] mb-6 text-balance">Our Story</h2>
-              <div className="space-y-4 text-[#5C0A1E]/90 text-xl">
+              <div className="space-y-4 text-[#5C0A1E]/90 text-xl px-3 lg:px-0">
                 <p className="text-pretty text-justify">
                     Located in Tawiran, Calapan City, Oriental Mindoro, Vencio&apos;s Garden Hotel & Restaurant 
                     has been welcoming guests since 2008 with warm Filipino hospitality and exceptional service.
@@ -504,7 +511,7 @@ export default function AboutPage() {
               <div className="text-center ml-0 mb-12 lg:ml-5 mt-10 lg:mt-0">
                 <p className="text-[#D4AF37] uppercase tracking-widest text-md lg:text-xl mb-3">The Commitment</p>
                 <h2 className="text-3xl md:text-4xl font-bold text-[#5C0A1E] mb-4 text-balance">Our Values</h2>
-                  <p className="text-[#5C0A1E]/80 text-md pb-5 px-5 text-justify">
+                  <p className="text-[#5C0A1E]/80 text-lg pb-5 px-5 text-justify">
                     At Vencio's, we are passionate about providing our guests with more than just a place to stay or dine. We strive to create an 
                     experience rooted in comfort, care, and sustainability. With plans to rebrand as a premier eco-tourism destination, our vision 
                     is to blend modern comforts with eco-friendly practices that honor the natural beauty of Oriental Mindoro. 
@@ -666,7 +673,6 @@ export default function AboutPage() {
               />
             </div>
 
-
             <div className="max-w-4xl mx-auto">
               <div className="flex flex-col sm:items-end items-start mb-12">
                 <div className="text-gray-200 text-lg italic space-y-1 text-right">
@@ -682,6 +688,7 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
+        <div className="h-1 bg-[#D4AF37]"/>
       </main>
       <Footer />
     </div>
